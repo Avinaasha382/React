@@ -49,3 +49,5 @@ const person = {
 const {name:userName, age: userAge} = person;
 
 console.log(userName,userAge);
+
+console.log(...person);
