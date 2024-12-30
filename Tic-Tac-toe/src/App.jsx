@@ -20,8 +20,6 @@ let isWinner = false;
   //console.log("No winner..");
 
 
-
-
 function App() {
   const [logInfo,setLogInfo] = useState([]);
 
@@ -40,7 +38,7 @@ function App() {
 
   function restartGame()
   {
-    //alternatively create a deep copy of currentBoardData so as to not change it in the GameOver file
+  //alternatively create a deep copy of currentBoardData so as to not change it in the GameBoard.jsx file
     for(let i = 0; i < currentBoardData.length;i++) 
     {
       currentBoardData[i] = [null,null,null];
