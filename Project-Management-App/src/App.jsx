@@ -34,6 +34,7 @@ function App() {
     }
 
     setProjects(newProjects);
+    setAddProject(0);
   }
 
 
