@@ -1,6 +1,7 @@
 import SideBar from "./components/SideBar";
 import Project from "./components/Project";
 import ProjectInfo from "./components/ProjectInfo";
+import Modal from "./components/Modal";
 import { useState,useRef} from "react";
 
 
@@ -9,9 +10,15 @@ function App() {
   const [addProject,setAddProject] = useState(0);
   const [projects,setProjects] = useState([]);
   const currentProject = useRef({});
+  const modal = useRef();
 
   function addToProject(projectTitle,projectDescription,projectDate)
   {
+    if(projectTitle.trim() === "" || projectDescription.trim() === "" || projectDate.trim() === "")
+    {
+      modal.current.open();
+      return;
+    }
     const newProject = {
       title:projectTitle,
       description:projectDescription,
@@ -52,6 +59,10 @@ function App() {
 
   return (
     <>
+    <Modal ref={modal} buttonCaption="Close"> 
+      <h2>Missing Fields!</h2>
+      <p>Looks like you have missed to enter few values..</p>
+    </Modal>
       <SideBar projects = {projects} handleClick={handleClick} setAddProject={setAddProject}/>
       
       {(addProject === 0) && <div class="sm:ml-40 h-screen flex flex-col items-center justify-center">
